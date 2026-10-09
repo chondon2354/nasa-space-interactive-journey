@@ -20,7 +20,7 @@ export function MissionCard({ mission }: { mission: Mission }) {
       </div>
       <h3 className="mt-3 font-display text-lg font-bold leading-tight">{mission.name}</h3>
       <p className="mt-1 font-tech text-xs uppercase tracking-wider text-muted-foreground">
-        {mission.destinationLabel.split("—")[0].trim()} · {mission.type}
+        {mission.destinationLabel.split("—")[0]?.trim()} · {mission.type}
       </p>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-secondary-custom">{mission.oneLiner}</p>
       <p className="mt-4 font-tech text-xs text-cyan opacity-0 transition-opacity group-hover:opacity-100">

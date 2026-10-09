@@ -118,7 +118,7 @@ function MissionDetail() {
               </button>
             ))}
           </div>
-          {openStage !== null && (
+          {openStage !== null && mission.journey[openStage] && (
             <div className="mt-4 animate-fade-up rounded-xl border border-border bg-card p-6">
               <p className="font-display font-semibold">
                 {STAGE_ICON[mission.journey[openStage].status]} {mission.journey[openStage].name}

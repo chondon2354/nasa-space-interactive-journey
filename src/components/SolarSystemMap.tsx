@@ -103,7 +103,7 @@ export function SolarSystemMap() {
             <p className="font-tech text-[10px] uppercase tracking-widest text-cyan">Mission file</p>
             <p className="mt-1 font-display text-lg font-bold">{hovered.name}</p>
             <p className="font-tech text-xs text-muted-foreground">
-              {hovered.year} · {hovered.destinationLabel.split("—")[0].trim()} · {hovered.type}
+              {hovered.year} · {hovered.destinationLabel.split("—")[0]?.trim()} · {hovered.type}
             </p>
             <p className={`mt-1 font-tech text-xs ${OUTCOME_META[hovered.outcome].color}`}>
               ● {OUTCOME_META[hovered.outcome].label}
