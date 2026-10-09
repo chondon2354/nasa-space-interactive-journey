@@ -10,7 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as DeepSpaceRouteImport } from './routes/deep-space'
+import { Route as MarsRouteImport } from './routes/mars'
 import { Route as MissionsRouteImport } from './routes/missions'
+import { Route as MoonRouteImport } from './routes/moon'
+import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as MissionsSlugRouteImport } from './routes/missions.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +23,34 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeepSpaceRoute = DeepSpaceRouteImport.update({
+  id: '/deep-space',
+  path: '/deep-space',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarsRoute = MarsRouteImport.update({
+  id: '/mars',
+  path: '/mars',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MissionsRoute = MissionsRouteImport.update({
   id: '/missions',
   path: '/missions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoonRoute = MoonRouteImport.update({
+  id: '/moon',
+  path: '/moon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MissionsSlugRoute = MissionsSlugRouteImport.update({
@@ -31,31 +61,76 @@ const MissionsSlugRoute = MissionsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/deep-space': typeof DeepSpaceRoute
+  '/mars': typeof MarsRoute
   '/missions': typeof MissionsRouteWithChildren
+  '/moon': typeof MoonRoute
+  '/timeline': typeof TimelineRoute
   '/missions/$slug': typeof MissionsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/deep-space': typeof DeepSpaceRoute
+  '/mars': typeof MarsRoute
   '/missions': typeof MissionsRouteWithChildren
+  '/moon': typeof MoonRoute
+  '/timeline': typeof TimelineRoute
   '/missions/$slug': typeof MissionsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/deep-space': typeof DeepSpaceRoute
+  '/mars': typeof MarsRoute
   '/missions': typeof MissionsRouteWithChildren
+  '/moon': typeof MoonRoute
+  '/timeline': typeof TimelineRoute
   '/missions/$slug': typeof MissionsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/missions' | '/missions/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/deep-space'
+    | '/mars'
+    | '/missions'
+    | '/moon'
+    | '/timeline'
+    | '/missions/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/missions' | '/missions/$slug'
-  id: '__root__' | '/' | '/missions' | '/missions/$slug'
+  to:
+    | '/'
+    | '/about'
+    | '/deep-space'
+    | '/mars'
+    | '/missions'
+    | '/moon'
+    | '/timeline'
+    | '/missions/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/deep-space'
+    | '/mars'
+    | '/missions'
+    | '/moon'
+    | '/timeline'
+    | '/missions/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  DeepSpaceRoute: typeof DeepSpaceRoute
+  MarsRoute: typeof MarsRoute
   MissionsRoute: typeof MissionsRouteWithChildren
+  MoonRoute: typeof MoonRoute
+  TimelineRoute: typeof TimelineRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -67,11 +142,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deep-space': {
+      id: '/deep-space'
+      path: '/deep-space'
+      fullPath: '/deep-space'
+      preLoaderRoute: typeof DeepSpaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mars': {
+      id: '/mars'
+      path: '/mars'
+      fullPath: '/mars'
+      preLoaderRoute: typeof MarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/missions': {
       id: '/missions'
       path: '/missions'
       fullPath: '/missions'
       preLoaderRoute: typeof MissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moon': {
+      id: '/moon'
+      path: '/moon'
+      fullPath: '/moon'
+      preLoaderRoute: typeof MoonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/missions/$slug': {
@@ -98,7 +208,12 @@ const MissionsRouteWithChildren = MissionsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  DeepSpaceRoute: DeepSpaceRoute,
+  MarsRoute: MarsRoute,
   MissionsRoute: MissionsRouteWithChildren,
+  MoonRoute: MoonRoute,
+  TimelineRoute: TimelineRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
