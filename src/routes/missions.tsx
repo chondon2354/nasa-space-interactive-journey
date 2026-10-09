@@ -46,7 +46,7 @@ function MissionsPage() {
       if (dest !== "all" && m.destination !== dest) return false;
       if (outcome !== "all" && m.outcome !== outcome) return false;
       if (era !== "all") {
-        const [lo, hi] = era.split("-").map(Number);
+        const [lo = 0, hi = 9999] = era.split("-").map(Number);
         if (m.year < lo || m.year >= hi) return false;
       }
       if (query) {
